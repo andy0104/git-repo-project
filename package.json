@@ -1,0 +1,21 @@
+{
+  "name": "project-github",
+  "version": "1.0.0",
+  "description": "A graphql project to get Gihub repo details",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --ignore ./tmp/ index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aninda Kar",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.11.1",
+    "graphql": "^16.6.0",
+    "nodegit": "^0.27.0",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
