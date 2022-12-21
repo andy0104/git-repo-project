@@ -1,8 +1,10 @@
 const clone = require('nodegit').Clone.clone;
 const shelljs = require('shelljs');
+const fs = require('fs');
+const path = require('path');
 
 exports.downloadGitRepo = async (repoUrl) => {
-	const downloadPath = process.cwd() + '/tmp/repo';
+	const downloadPath = path.join(process.cwd(), 'tmp', 'repo');
 	console.log(repoUrl, downloadPath);
 	
 	try {
@@ -53,13 +55,17 @@ exports.getYmlFile = async (readPath) => {
 function clearTmpDir(readPath) {
 	try {
 		return new Promise((resolve, reject) => {
-			shelljs.exec(`rm -rf ${readPath}`, (code, stdout, stderr) => {
-				if (code != 0) {
-					reject("Error executing rm command");
-				}
+			if (fs.existsSync(readPath)) {
+				shelljs.exec(`rm -rf ${readPath}`, (code, stdout, stderr) => {
+					if (code != 0) {
+						reject("Error executing rm command");
+					}
+					resolve(true);
+				});
+			} else {
 				resolve(true);
-			});
-		})
+			}
+		});
 	} catch(e) {
 		throw e;
 	}

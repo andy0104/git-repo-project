@@ -57,7 +57,7 @@ exports.Query = {
 				
 				const ymlFile = await getYmlFile(repoPath);
 				result.content = ymlFile.join("");
-				
+
 				const fileContent = await getAllFiles(repoPath);
 				result.files = fileContent.length;
 			}
